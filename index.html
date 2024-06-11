@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- BarcodeDetector polyfill (fallback, where not available)-->
+  <script src="https://cdn.jsdelivr.net/npm/@undecaf/zbar-wasm@0.9.15/dist/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@undecaf/barcode-detector-polyfill@0.9.20/dist/index.js"></script>
+  <script>
+    if ('BarcodeDetector' in window) {
+      console.log('BarcodeDetector supported in platform');
+    } else {
+      console.log('BarcodeDetector not supported in platform, using polyfill');
+      window.BarcodeDetector = barcodeDetectorPolyfill.BarcodeDetectorPolyfill;
+    }
+  </script>
+</head>
+<style>
+  body {
+    margin: 0;
+    height: 100vh;
+  }
+
+  .flex-container {
+    display: flex;
+    font-family: sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+
+    padding-bottom: 100px;
+  }
+
+  .content {
+    margin: auto;
+    position: relative;
+    width: 90%;
+    max-width: 700px;
+  }
+
+  .col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .row {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center
+  }
+
+  button {
+    min-width: 5.14em;
+    width: 100%;
+    text-align: center;
+    font: inherit;
+    padding: 0.7em 0.57em;
+    color: black;
+  }
+</style>
+<body>
+  <div class="flex-container">
+    <div class="content">
+      <div class="col">
+        <div class="row">
+          <h2>Broadcast Audio URI Scanner</h2>
+        </div>
+
+        <div class="row">
+          <button id="start_scanner">Start scanner</button>
+          <button id='stop_scanner'>Stop scanner</button>
+        </div>
+
+        <!-- Broadcast Audio URI scanner element -->
+        <bau-scanner></bau-scanner>
+      </div>
+    </div>
+  </div>
+</body>
+<script type="module" src="./bau-scanner.js"></script>
+<script>
+  let scanner;
+
+  const init = () => {
+    const startScan = document.querySelector('#start_scanner');
+    const stopScan = document.querySelector('#stop_scanner');
+
+    scanner = document.querySelector('bau-scanner');
+
+    startScan.addEventListener('click', scanner.startCamera);
+    stopScan.addEventListener('click', scanner.stopCamera);
+  }
+
+  window.addEventListener('load', init);
+</script>
+</html>
