@@ -1,7 +1,7 @@
 # Broadcast Audio URI Source
-The [Broadcast Audio URI](https://www.bluetooth.com/specifications/specs/broadcast-audio-uri-2/) is an exciting new spec that allows information about a Broadcast Audio Source to be conveyed over an out-of-band (OOB) medium to a Broadcast Audio Assistant.
+The [Broadcast Audio URI](https://www.bluetooth.com/specifications/specs/broadcast-audio-uniform-resource-identifier/) is an exciting new spec that allows information about a Broadcast Audio Source to be conveyed over an out-of-band (OOB) medium to a Broadcast Audio Assistant.
 
-This is a small PoC of how a [Broadcast Audio URI](https://www.bluetooth.com/specifications/specs/broadcast-audio-uri-2/) can be used to expose a dynamically generated QR code on an nRF5340 Audio DK with an Adafruit 2.8" TFT shield attached.
+This is a small PoC of how a [Broadcast Audio URI](https://www.bluetooth.com/specifications/specs/broadcast-audio-uniform-resource-identifier/) can be used to expose a dynamically generated QR code on an nRF5340 Audio DK with an Adafruit 2.8" TFT shield attached.
 
 The application is a slightly modified version of the [Broadcast Audio Source sample](https://github.com/zephyrproject-rtos/zephyr/tree/main/samples/bluetooth/broadcast_audio_source).
 
